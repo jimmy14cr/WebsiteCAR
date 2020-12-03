@@ -14,12 +14,6 @@ namespace ApiRestCAR.Models
     
     public partial class Registro
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Registro()
-        {
-            this.Usuario1 = new HashSet<Usuario>();
-        }
-    
         public int IdRegistro { get; set; }
         public Nullable<int> Identificacion { get; set; }
         public string Contrasena { get; set; }
@@ -28,7 +22,5 @@ namespace ApiRestCAR.Models
     
         public virtual Roles Roles { get; set; }
         public virtual Usuario Usuario { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario> Usuario1 { get; set; }
     }
 }

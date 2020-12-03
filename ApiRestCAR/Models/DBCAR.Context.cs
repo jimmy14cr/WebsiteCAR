@@ -13,10 +13,10 @@ namespace ApiRestCAR.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DbCAREntidades : DbContext
+    public partial class DbCoopeAlfaroRuizEntidades : DbContext
     {
-        public DbCAREntidades()
-            : base("name=DbCAREntidades")
+        public DbCoopeAlfaroRuizEntidades()
+            : base("name=DbCoopeAlfaroRuizEntidades")
         {
         }
     

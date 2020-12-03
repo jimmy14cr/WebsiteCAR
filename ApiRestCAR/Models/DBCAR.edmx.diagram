@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7c728ea080ea41ee96f901fa065bef90" Name="Diagram1">
+        <EntityTypeShape EntityType="DbCoopeAlfaroRuizModel.AsigCursoRol" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbCoopeAlfaroRuizModel.Cursos" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbCoopeAlfaroRuizModel.CursosMatriculados" Width="1.5" PointX="3.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbCoopeAlfaroRuizModel.DetalleEvaluacion" Width="1.5" PointX="1.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbCoopeAlfaroRuizModel.Evaluaciones" Width="1.5" PointX="1.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbCoopeAlfaroRuizModel.Lecciones" Width="1.5" PointX="3.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbCoopeAlfaroRuizModel.Modulos" Width="1.5" PointX="1.5" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbCoopeAlfaroRuizModel.Progreso" Width="1.5" PointX="1.5" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbCoopeAlfaroRuizModel.Registro" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbCoopeAlfaroRuizModel.Roles" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbCoopeAlfaroRuizModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbCoopeAlfaroRuizModel.TipoLeccion" Width="1.5" PointX="1.5" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbCoopeAlfaroRuizModel.Usuario" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="DbCoopeAlfaroRuizModel.FK_AsigCursoRol_Cursos" ManuallyRouted="false" />
+        <AssociationConnector Association="DbCoopeAlfaroRuizModel.FK_AsigCursoRol_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="DbCoopeAlfaroRuizModel.FK_Cursos_Modulos" ManuallyRouted="false" />
+        <AssociationConnector Association="DbCoopeAlfaroRuizModel.FK_CursosMatriculados_Evaluaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="DbCoopeAlfaroRuizModel.FK_CursosMatriculados_Progreso" ManuallyRouted="false" />
+        <AssociationConnector Association="DbCoopeAlfaroRuizModel.FK_Usuario_CursosMatriculados" ManuallyRouted="false" />
+        <AssociationConnector Association="DbCoopeAlfaroRuizModel.FK_Evaluaciones_DetalleEvaluacion" ManuallyRouted="false" />
+        <AssociationConnector Association="DbCoopeAlfaroRuizModel.FK_Lecciones_Modulos" ManuallyRouted="false" />
+        <AssociationConnector Association="DbCoopeAlfaroRuizModel.FK_Lecciones_TipoLeccion" ManuallyRouted="false" />
+        <AssociationConnector Association="DbCoopeAlfaroRuizModel.FK_Registro_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="DbCoopeAlfaroRuizModel.FK_Registro_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="DbCoopeAlfaroRuizModel.FK_Usuario_Roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

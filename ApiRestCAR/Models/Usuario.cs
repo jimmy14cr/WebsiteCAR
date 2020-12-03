@@ -32,7 +32,6 @@ namespace ApiRestCAR.Models
         public virtual CursosMatriculados CursosMatriculados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Registro> Registro { get; set; }
-        public virtual Registro Registro1 { get; set; }
         public virtual Roles Roles { get; set; }
     }
 }

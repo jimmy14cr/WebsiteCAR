@@ -25,7 +25,6 @@ namespace ApiRestCAR.Models
         public Nullable<int> IdEvaluacion { get; set; }
         public Nullable<int> IdProgreso { get; set; }
     
-        public virtual Cursos Cursos { get; set; }
         public virtual Evaluaciones Evaluaciones { get; set; }
         public virtual Progreso Progreso { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

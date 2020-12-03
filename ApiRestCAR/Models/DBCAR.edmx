@@ -4,14 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DbCARModelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DbCoopeAlfaroRuizModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AsigCursoRol">
           <Key>
             <PropertyRef Name="IdAsignacion" />
           </Key>
           <Property Name="IdAsignacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdRol" Type="int" />
-          <Property Name="IdCurso" Type="int" />
+          <Property Name="IdRol" Type="int" Nullable="false" />
+          <Property Name="IdCurso" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Cursos">
           <Key>
@@ -71,7 +71,7 @@
           <Key>
             <PropertyRef Name="IdProgreso" />
           </Key>
-          <Property Name="IdProgreso" Type="int" Nullable="false" />
+          <Property Name="IdProgreso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="20" />
           <Property Name="IdModulo" Type="int" />
         </EntityType>
@@ -123,7 +123,7 @@
           <Property Name="IdCursoMatriculado" Type="int" />
         </EntityType>
         <Association Name="FK_AsigCursoRol_Cursos">
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
           <End Role="AsigCursoRol" Type="Self.AsigCursoRol" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cursos">
@@ -135,7 +135,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AsigCursoRol_Roles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="AsigCursoRol" Type="Self.AsigCursoRol" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
@@ -143,18 +143,6 @@
             </Principal>
             <Dependent Role="AsigCursoRol">
               <PropertyRef Name="IdRol" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cursos_AsigCursoRol">
-          <End Role="AsigCursoRol" Type="Self.AsigCursoRol" Multiplicity="0..1" />
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AsigCursoRol">
-              <PropertyRef Name="IdAsignacion" />
-            </Principal>
-            <Dependent Role="Cursos">
-              <PropertyRef Name="IdAsignacion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -167,18 +155,6 @@
             </Principal>
             <Dependent Role="Cursos">
               <PropertyRef Name="IdModulo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CursosMatriculados_Cursos">
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
-          <End Role="CursosMatriculados" Type="Self.CursosMatriculados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cursos">
-              <PropertyRef Name="IdCurso" />
-            </Principal>
-            <Dependent Role="CursosMatriculados">
-              <PropertyRef Name="IdCurso" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -254,7 +230,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Registro_Usuario1">
+        <Association Name="FK_Registro_Usuario">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Registro" Type="Self.Registro" Multiplicity="*" />
           <ReferentialConstraint>
@@ -278,18 +254,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Usuario_Registro1">
-          <End Role="Registro" Type="Self.Registro" Multiplicity="0..1" />
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Registro">
-              <PropertyRef Name="IdRegistro" />
-            </Principal>
-            <Dependent Role="Usuario">
-              <PropertyRef Name="IdRegistro" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Usuario_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
@@ -302,7 +266,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DbCARModeloStoreContainer">
+        <EntityContainer Name="DbCoopeAlfaroRuizModelStoreContainer">
           <EntitySet Name="AsigCursoRol" EntityType="Self.AsigCursoRol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CursosMatriculados" EntityType="Self.CursosMatriculados" Schema="dbo" store:Type="Tables" />
@@ -324,17 +288,9 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="AsigCursoRol" EntitySet="AsigCursoRol" />
           </AssociationSet>
-          <AssociationSet Name="FK_Cursos_AsigCursoRol" Association="Self.FK_Cursos_AsigCursoRol">
-            <End Role="AsigCursoRol" EntitySet="AsigCursoRol" />
-            <End Role="Cursos" EntitySet="Cursos" />
-          </AssociationSet>
           <AssociationSet Name="FK_Cursos_Modulos" Association="Self.FK_Cursos_Modulos">
             <End Role="Modulos" EntitySet="Modulos" />
             <End Role="Cursos" EntitySet="Cursos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CursosMatriculados_Cursos" Association="Self.FK_CursosMatriculados_Cursos">
-            <End Role="Cursos" EntitySet="Cursos" />
-            <End Role="CursosMatriculados" EntitySet="CursosMatriculados" />
           </AssociationSet>
           <AssociationSet Name="FK_CursosMatriculados_Evaluaciones" Association="Self.FK_CursosMatriculados_Evaluaciones">
             <End Role="Evaluaciones" EntitySet="Evaluaciones" />
@@ -360,16 +316,12 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Registro" EntitySet="Registro" />
           </AssociationSet>
-          <AssociationSet Name="FK_Registro_Usuario1" Association="Self.FK_Registro_Usuario1">
+          <AssociationSet Name="FK_Registro_Usuario" Association="Self.FK_Registro_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Registro" EntitySet="Registro" />
           </AssociationSet>
           <AssociationSet Name="FK_Usuario_CursosMatriculados" Association="Self.FK_Usuario_CursosMatriculados">
             <End Role="CursosMatriculados" EntitySet="CursosMatriculados" />
-            <End Role="Usuario" EntitySet="Usuario" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Usuario_Registro1" Association="Self.FK_Usuario_Registro1">
-            <End Role="Registro" EntitySet="Registro" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
           <AssociationSet Name="FK_Usuario_Roles" Association="Self.FK_Usuario_Roles">
@@ -381,17 +333,16 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DbCARModelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DbCoopeAlfaroRuizModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AsigCursoRol">
           <Key>
             <PropertyRef Name="IdAsignacion" />
           </Key>
           <Property Name="IdAsignacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdRol" Type="Int32" />
-          <Property Name="IdCurso" Type="Int32" />
+          <Property Name="IdRol" Type="Int32" Nullable="false" />
+          <Property Name="IdCurso" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cursos" Relationship="Self.FK_AsigCursoRol_Cursos" FromRole="AsigCursoRol" ToRole="Cursos" />
           <NavigationProperty Name="Roles" Relationship="Self.FK_AsigCursoRol_Roles" FromRole="AsigCursoRol" ToRole="Roles" />
-          <NavigationProperty Name="Cursos1" Relationship="Self.FK_Cursos_AsigCursoRol" FromRole="AsigCursoRol" ToRole="Cursos" />
         </EntityType>
         <EntityType Name="Cursos">
           <Key>
@@ -405,9 +356,7 @@
           <Property Name="FechaInicio" Type="DateTime" Precision="3" />
           <Property Name="FechaFinal" Type="DateTime" Precision="3" />
           <NavigationProperty Name="AsigCursoRol" Relationship="Self.FK_AsigCursoRol_Cursos" FromRole="Cursos" ToRole="AsigCursoRol" />
-          <NavigationProperty Name="AsigCursoRol1" Relationship="Self.FK_Cursos_AsigCursoRol" FromRole="Cursos" ToRole="AsigCursoRol" />
           <NavigationProperty Name="Modulos" Relationship="Self.FK_Cursos_Modulos" FromRole="Cursos" ToRole="Modulos" />
-          <NavigationProperty Name="CursosMatriculados" Relationship="Self.FK_CursosMatriculados_Cursos" FromRole="Cursos" ToRole="CursosMatriculados" />
         </EntityType>
         <EntityType Name="CursosMatriculados">
           <Key>
@@ -417,7 +366,6 @@
           <Property Name="IdCurso" Type="Int32" />
           <Property Name="IdEvaluacion" Type="Int32" />
           <Property Name="IdProgreso" Type="Int32" />
-          <NavigationProperty Name="Cursos" Relationship="Self.FK_CursosMatriculados_Cursos" FromRole="CursosMatriculados" ToRole="Cursos" />
           <NavigationProperty Name="Evaluaciones" Relationship="Self.FK_CursosMatriculados_Evaluaciones" FromRole="CursosMatriculados" ToRole="Evaluaciones" />
           <NavigationProperty Name="Progreso" Relationship="Self.FK_CursosMatriculados_Progreso" FromRole="CursosMatriculados" ToRole="Progreso" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_CursosMatriculados" FromRole="CursosMatriculados" ToRole="Usuario" />
@@ -466,7 +414,7 @@
           <Key>
             <PropertyRef Name="IdProgreso" />
           </Key>
-          <Property Name="IdProgreso" Type="Int32" Nullable="false" />
+          <Property Name="IdProgreso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="IdModulo" Type="Int32" />
           <NavigationProperty Name="CursosMatriculados" Relationship="Self.FK_CursosMatriculados_Progreso" FromRole="Progreso" ToRole="CursosMatriculados" />
@@ -481,8 +429,7 @@
           <Property Name="IdRol" Type="Int32" />
           <Property Name="IdUsuario" Type="Int32" />
           <NavigationProperty Name="Roles" Relationship="Self.FK_Registro_Roles" FromRole="Registro" ToRole="Roles" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK_Registro_Usuario1" FromRole="Registro" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK_Usuario_Registro1" FromRole="Registro" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Registro_Usuario" FromRole="Registro" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -525,12 +472,11 @@
           <Property Name="IdRegistro" Type="Int32" />
           <Property Name="IdCursoMatriculado" Type="Int32" />
           <NavigationProperty Name="CursosMatriculados" Relationship="Self.FK_Usuario_CursosMatriculados" FromRole="Usuario" ToRole="CursosMatriculados" />
-          <NavigationProperty Name="Registro" Relationship="Self.FK_Registro_Usuario1" FromRole="Usuario" ToRole="Registro" />
-          <NavigationProperty Name="Registro1" Relationship="Self.FK_Usuario_Registro1" FromRole="Usuario" ToRole="Registro" />
+          <NavigationProperty Name="Registro" Relationship="Self.FK_Registro_Usuario" FromRole="Usuario" ToRole="Registro" />
           <NavigationProperty Name="Roles" Relationship="Self.FK_Usuario_Roles" FromRole="Usuario" ToRole="Roles" />
         </EntityType>
         <Association Name="FK_AsigCursoRol_Cursos">
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
           <End Role="AsigCursoRol" Type="Self.AsigCursoRol" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cursos">
@@ -542,7 +488,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AsigCursoRol_Roles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="AsigCursoRol" Type="Self.AsigCursoRol" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
@@ -550,18 +496,6 @@
             </Principal>
             <Dependent Role="AsigCursoRol">
               <PropertyRef Name="IdRol" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cursos_AsigCursoRol">
-          <End Role="AsigCursoRol" Type="Self.AsigCursoRol" Multiplicity="0..1" />
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AsigCursoRol">
-              <PropertyRef Name="IdAsignacion" />
-            </Principal>
-            <Dependent Role="Cursos">
-              <PropertyRef Name="IdAsignacion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -574,18 +508,6 @@
             </Principal>
             <Dependent Role="Cursos">
               <PropertyRef Name="IdModulo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CursosMatriculados_Cursos">
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
-          <End Role="CursosMatriculados" Type="Self.CursosMatriculados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cursos">
-              <PropertyRef Name="IdCurso" />
-            </Principal>
-            <Dependent Role="CursosMatriculados">
-              <PropertyRef Name="IdCurso" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -673,7 +595,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Registro_Usuario1">
+        <Association Name="FK_Registro_Usuario">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Registro" Type="Self.Registro" Multiplicity="*" />
           <ReferentialConstraint>
@@ -682,18 +604,6 @@
             </Principal>
             <Dependent Role="Registro">
               <PropertyRef Name="IdUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Usuario_Registro1">
-          <End Role="Registro" Type="Self.Registro" Multiplicity="0..1" />
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Registro">
-              <PropertyRef Name="IdRegistro" />
-            </Principal>
-            <Dependent Role="Usuario">
-              <PropertyRef Name="IdRegistro" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -709,7 +619,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DbCAREntidades" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DbCoopeAlfaroRuizEntidades" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AsigCursoRol" EntityType="Self.AsigCursoRol" />
           <EntitySet Name="Cursos" EntityType="Self.Cursos" />
           <EntitySet Name="CursosMatriculados" EntityType="Self.CursosMatriculados" />
@@ -731,17 +641,9 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="AsigCursoRol" EntitySet="AsigCursoRol" />
           </AssociationSet>
-          <AssociationSet Name="FK_Cursos_AsigCursoRol" Association="Self.FK_Cursos_AsigCursoRol">
-            <End Role="AsigCursoRol" EntitySet="AsigCursoRol" />
-            <End Role="Cursos" EntitySet="Cursos" />
-          </AssociationSet>
           <AssociationSet Name="FK_Cursos_Modulos" Association="Self.FK_Cursos_Modulos">
             <End Role="Modulos" EntitySet="Modulos" />
             <End Role="Cursos" EntitySet="Cursos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CursosMatriculados_Cursos" Association="Self.FK_CursosMatriculados_Cursos">
-            <End Role="Cursos" EntitySet="Cursos" />
-            <End Role="CursosMatriculados" EntitySet="CursosMatriculados" />
           </AssociationSet>
           <AssociationSet Name="FK_CursosMatriculados_Evaluaciones" Association="Self.FK_CursosMatriculados_Evaluaciones">
             <End Role="Evaluaciones" EntitySet="Evaluaciones" />
@@ -771,13 +673,9 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Registro" EntitySet="Registro" />
           </AssociationSet>
-          <AssociationSet Name="FK_Registro_Usuario1" Association="Self.FK_Registro_Usuario1">
+          <AssociationSet Name="FK_Registro_Usuario" Association="Self.FK_Registro_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Registro" EntitySet="Registro" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Usuario_Registro1" Association="Self.FK_Usuario_Registro1">
-            <End Role="Registro" EntitySet="Registro" />
-            <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
           <AssociationSet Name="FK_Usuario_Roles" Association="Self.FK_Usuario_Roles">
             <End Role="Roles" EntitySet="Roles" />
@@ -789,9 +687,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DbCARModeloStoreContainer" CdmEntityContainer="DbCAREntidades">
+        <EntityContainerMapping StorageEntityContainer="DbCoopeAlfaroRuizModelStoreContainer" CdmEntityContainer="DbCoopeAlfaroRuizEntidades">
           <EntitySetMapping Name="AsigCursoRol">
-            <EntityTypeMapping TypeName="DbCARModelo.AsigCursoRol">
+            <EntityTypeMapping TypeName="DbCoopeAlfaroRuizModel.AsigCursoRol">
               <MappingFragment StoreEntitySet="AsigCursoRol">
                 <ScalarProperty Name="IdAsignacion" ColumnName="IdAsignacion" />
                 <ScalarProperty Name="IdRol" ColumnName="IdRol" />
@@ -800,7 +698,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cursos">
-            <EntityTypeMapping TypeName="DbCARModelo.Cursos">
+            <EntityTypeMapping TypeName="DbCoopeAlfaroRuizModel.Cursos">
               <MappingFragment StoreEntitySet="Cursos">
                 <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
                 <ScalarProperty Name="NombreCurso" ColumnName="NombreCurso" />
@@ -813,7 +711,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CursosMatriculados">
-            <EntityTypeMapping TypeName="DbCARModelo.CursosMatriculados">
+            <EntityTypeMapping TypeName="DbCoopeAlfaroRuizModel.CursosMatriculados">
               <MappingFragment StoreEntitySet="CursosMatriculados">
                 <ScalarProperty Name="IdCursoMatriculado" ColumnName="IdCursoMatriculado" />
                 <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
@@ -823,7 +721,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DetalleEvaluacion">
-            <EntityTypeMapping TypeName="DbCARModelo.DetalleEvaluacion">
+            <EntityTypeMapping TypeName="DbCoopeAlfaroRuizModel.DetalleEvaluacion">
               <MappingFragment StoreEntitySet="DetalleEvaluacion">
                 <ScalarProperty Name="IdDetalle" ColumnName="IdDetalle" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -831,7 +729,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Evaluaciones">
-            <EntityTypeMapping TypeName="DbCARModelo.Evaluaciones">
+            <EntityTypeMapping TypeName="DbCoopeAlfaroRuizModel.Evaluaciones">
               <MappingFragment StoreEntitySet="Evaluaciones">
                 <ScalarProperty Name="IdEvaluacion" ColumnName="IdEvaluacion" />
                 <ScalarProperty Name="ValorObtenido" ColumnName="ValorObtenido" />
@@ -842,7 +740,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Lecciones">
-            <EntityTypeMapping TypeName="DbCARModelo.Lecciones">
+            <EntityTypeMapping TypeName="DbCoopeAlfaroRuizModel.Lecciones">
               <MappingFragment StoreEntitySet="Lecciones">
                 <ScalarProperty Name="IdLeccion" ColumnName="IdLeccion" />
                 <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
@@ -852,7 +750,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Modulos">
-            <EntityTypeMapping TypeName="DbCARModelo.Modulos">
+            <EntityTypeMapping TypeName="DbCoopeAlfaroRuizModel.Modulos">
               <MappingFragment StoreEntitySet="Modulos">
                 <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -860,7 +758,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Progreso">
-            <EntityTypeMapping TypeName="DbCARModelo.Progreso">
+            <EntityTypeMapping TypeName="DbCoopeAlfaroRuizModel.Progreso">
               <MappingFragment StoreEntitySet="Progreso">
                 <ScalarProperty Name="IdProgreso" ColumnName="IdProgreso" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -869,7 +767,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Registro">
-            <EntityTypeMapping TypeName="DbCARModelo.Registro">
+            <EntityTypeMapping TypeName="DbCoopeAlfaroRuizModel.Registro">
               <MappingFragment StoreEntitySet="Registro">
                 <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
                 <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
@@ -880,7 +778,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="DbCARModelo.Roles">
+            <EntityTypeMapping TypeName="DbCoopeAlfaroRuizModel.Roles">
               <MappingFragment StoreEntitySet="Roles">
                 <ScalarProperty Name="IdRol" ColumnName="IdRol" />
                 <ScalarProperty Name="TipoRol" ColumnName="TipoRol" />
@@ -888,7 +786,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="DbCARModelo.sysdiagrams">
+            <EntityTypeMapping TypeName="DbCoopeAlfaroRuizModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -899,7 +797,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TipoLeccion">
-            <EntityTypeMapping TypeName="DbCARModelo.TipoLeccion">
+            <EntityTypeMapping TypeName="DbCoopeAlfaroRuizModel.TipoLeccion">
               <MappingFragment StoreEntitySet="TipoLeccion">
                 <ScalarProperty Name="IdTipoLeccion" ColumnName="IdTipoLeccion" />
                 <ScalarProperty Name="Modalidad" ColumnName="Modalidad" />
@@ -907,7 +805,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuario">
-            <EntityTypeMapping TypeName="DbCARModelo.Usuario">
+            <EntityTypeMapping TypeName="DbCoopeAlfaroRuizModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />

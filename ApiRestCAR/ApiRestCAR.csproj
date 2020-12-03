@@ -169,58 +169,58 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AsigCursoRol.cs">
-      <DependentUpon>ModeloCAR.tt</DependentUpon>
+      <DependentUpon>DBCAR.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cursos.cs">
-      <DependentUpon>ModeloCAR.tt</DependentUpon>
+      <DependentUpon>DBCAR.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CursosMatriculados.cs">
-      <DependentUpon>ModeloCAR.tt</DependentUpon>
+      <DependentUpon>DBCAR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBCAR.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBCAR.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBCAR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBCAR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBCAR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBCAR.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\DetalleEvaluacion.cs">
-      <DependentUpon>ModeloCAR.tt</DependentUpon>
+      <DependentUpon>DBCAR.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Evaluaciones.cs">
-      <DependentUpon>ModeloCAR.tt</DependentUpon>
+      <DependentUpon>DBCAR.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Lecciones.cs">
-      <DependentUpon>ModeloCAR.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModeloCAR.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloCAR.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModeloCAR.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloCAR.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModeloCAR.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloCAR.edmx</DependentUpon>
+      <DependentUpon>DBCAR.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Modulos.cs">
-      <DependentUpon>ModeloCAR.tt</DependentUpon>
+      <DependentUpon>DBCAR.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Progreso.cs">
-      <DependentUpon>ModeloCAR.tt</DependentUpon>
+      <DependentUpon>DBCAR.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Registro.cs">
-      <DependentUpon>ModeloCAR.tt</DependentUpon>
+      <DependentUpon>DBCAR.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Roles.cs">
-      <DependentUpon>ModeloCAR.tt</DependentUpon>
+      <DependentUpon>DBCAR.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>ModeloCAR.tt</DependentUpon>
+      <DependentUpon>DBCAR.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoLeccion.cs">
-      <DependentUpon>ModeloCAR.tt</DependentUpon>
+      <DependentUpon>DBCAR.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>ModeloCAR.tt</DependentUpon>
+      <DependentUpon>DBCAR.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -233,15 +233,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\ModeloCAR.Context.tt">
+    <Content Include="Models\DBCAR.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModeloCAR.Context.cs</LastGenOutput>
-      <DependentUpon>ModeloCAR.edmx</DependentUpon>
+      <DependentUpon>DBCAR.edmx</DependentUpon>
+      <LastGenOutput>DBCAR.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ModeloCAR.tt">
+    <Content Include="Models\DBCAR.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeloCAR.edmx</DependentUpon>
-      <LastGenOutput>ModeloCAR.cs</LastGenOutput>
+      <DependentUpon>DBCAR.edmx</DependentUpon>
+      <LastGenOutput>DBCAR.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -264,12 +264,12 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Models\ModeloCAR.edmx">
+    <EntityDeploy Include="Models\DBCAR.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloCAR.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBCAR.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ModeloCAR.edmx.diagram">
-      <DependentUpon>ModeloCAR.edmx</DependentUpon>
+    <Content Include="Models\DBCAR.edmx.diagram">
+      <DependentUpon>DBCAR.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

@@ -14,7 +14,7 @@ namespace ApiRestCAR.Controllers
 {
     public class TipoLeccionController : ApiController
     {
-        private DbCAREntidades db = new DbCAREntidades();
+        private DbCoopeAlfaroRuizEntidades db = new DbCoopeAlfaroRuizEntidades();
 
         // GET: api/TipoLeccion
         public IQueryable<TipoLeccion> GetTipoLeccion()

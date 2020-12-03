@@ -14,19 +14,11 @@ namespace ApiRestCAR.Models
     
     public partial class AsigCursoRol
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AsigCursoRol()
-        {
-            this.Cursos1 = new HashSet<Cursos>();
-        }
-    
         public int IdAsignacion { get; set; }
-        public Nullable<int> IdRol { get; set; }
-        public Nullable<int> IdCurso { get; set; }
+        public int IdRol { get; set; }
+        public int IdCurso { get; set; }
     
         public virtual Cursos Cursos { get; set; }
         public virtual Roles Roles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cursos> Cursos1 { get; set; }
     }
 }

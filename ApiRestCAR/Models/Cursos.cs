@@ -18,7 +18,6 @@ namespace ApiRestCAR.Models
         public Cursos()
         {
             this.AsigCursoRol = new HashSet<AsigCursoRol>();
-            this.CursosMatriculados = new HashSet<CursosMatriculados>();
         }
     
         public int IdCurso { get; set; }
@@ -31,9 +30,6 @@ namespace ApiRestCAR.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AsigCursoRol> AsigCursoRol { get; set; }
-        public virtual AsigCursoRol AsigCursoRol1 { get; set; }
         public virtual Modulos Modulos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CursosMatriculados> CursosMatriculados { get; set; }
     }
 }
